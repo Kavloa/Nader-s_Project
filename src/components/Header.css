@@ -1,0 +1,86 @@
+/* Header.css */
+
+/* Logo styling */
+.logo {
+    width: 150px; /* Adjust the size of the logo */
+  }
+  
+.container{
+    min-width: 100% ;
+    padding: 0 10px !important;
+    margin: 0 !important;
+}
+
+.first{
+padding-left: 150px !important;
+}
+
+.sidebar{
+    background-color: #010212 !important;
+    color: white;
+    height: 100% !important;
+    padding-top: 50px !important;
+}
+
+.sidebar ul:first-child li:first-child{
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+    right: 27px;
+}
+
+.sidebar .logo{
+    width: 70% !important;
+}
+
+.sidebar ul {
+    padding-left: 25px !important;
+}
+
+  /* Navbar background and spacing */
+  .navbar {
+    margin-top: 0 !important;
+    background-color: white; /* Background similar to Andeo's */
+    padding: 0 0 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  }
+  
+  .navbar .nav-link {
+    color: white; /* Text color for nav links */
+    font-weight: 500;
+    text-transform: uppercase; /* Add uppercase styling */
+    margin: 0 15px; /* Add spacing between links */
+    position: relative; /* To add hover underline */
+  }
+  
+  /* Hover effect for the links */
+  .navbar .nav-link:hover {
+    color: #c87a26; /* Blue color on hover */
+  }
+  
+  /* Underline effect */
+  .navbar .nav-link::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #c87a26;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: all 0.3s;
+  }
+  
+  .navbar .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 991px) {
+    .navbar {
+      padding: 0.5rem 0;
+    }
+    .navbar .nav-link {
+      margin: 10px 0; /* Adjust margins for mobile view */
+    }
+  }
+  
