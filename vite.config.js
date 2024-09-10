@@ -8,4 +8,7 @@ export default defineConfig({
       '@': '/src',  // Assuming this alias is used for resolving paths
     },
   },
-});
+  base: '/Nader-s_Project/', // Add this line (replace repo-name with your repository name)
+})
+
+
