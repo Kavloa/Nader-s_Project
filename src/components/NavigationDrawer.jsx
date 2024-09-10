@@ -9,6 +9,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import './Header/Header.css';
+
 
 export default function NavigationDrawer({ isDrawerOpen, toggleDrawer }) {
   const list = () => (
@@ -29,7 +31,7 @@ export default function NavigationDrawer({ isDrawerOpen, toggleDrawer }) {
                   {text.includes('.png') ? (
                     <img src={text} alt={`List Item ${index}`} className='logo' />
                   ) : (
-                    <ListItemText primary={text} />
+                    <ListItemText primary={text} className='tx' />
                   )}
                 </ListItemButton>
               </ListItem>
@@ -44,7 +46,7 @@ export default function NavigationDrawer({ isDrawerOpen, toggleDrawer }) {
               {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}
-              <ListItemText primary={text} />
+              <ListItemText primary={text}  className='tx' />
             </ListItemButton>
           </ListItem>
         ))}

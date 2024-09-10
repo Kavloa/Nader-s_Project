@@ -1,26 +1,29 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 import ProductPage from "./pages/ProductPage";
-import ContactPage from "./pages/ContactPage"; // Assuming you have a contact page
-import Header from "./components/Header"; // Import the updated Header component
-import Footer from "./components/Footer"; // Assuming you have a Footer component
+import ContactPage from "./pages/ContentPage/ContactPage"; // Ensure this path is correct
+import Header from "./components/Header/Header"; // Ensure this path is correct
+import Footer from "./components/Footer/Footer"; // Ensure this path is correct
 
 function App() {
   return (
     <Router>
-      {/* Header is now included with the Products dropdown */}
+      {/* The Header (including the navbar) appears on all pages */}
       <Header />
 
-      {/* Define your routes */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        {/* Add more routes if necessary */}
-      </Routes>
+      <div className="content">
+        {/* Define your routes */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* <Route path="/about" element={<AboutPage />} /> */}
+          {/* Add more routes if necessary */}
+        </Routes>
+      </div>
 
-      {/* Footer */}
+      {/* Footer remains consistent on every page */}
       <Footer />
     </Router>
   );
