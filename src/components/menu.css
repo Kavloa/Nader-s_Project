@@ -1,0 +1,8 @@
+/* .hover-text-white {
+    color: white !important; /* Default text color 
+  } */
+  
+  .hover-text-white:hover {
+    color: white !important; /* Change to white on hover */
+  }
+  

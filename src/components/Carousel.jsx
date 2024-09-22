@@ -20,7 +20,7 @@ function ControlledCarousel({ slides }) {
         <Carousel.Item key={idx}>
           {slide.image && (
             <img
-              className="d-block w-100"
+              className="d-block"
               src={slide.image}
               alt={slide.title}
             />

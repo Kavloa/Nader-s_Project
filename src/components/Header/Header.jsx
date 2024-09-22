@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Drawer from "../NavigationDrawer"; // Ensure this component is working properly
 import './Header.css';
-import MenuCustomList from "../Menu";
-import { CDropdown, CDropdownToggle,CDropdownDivider, CDropdownMenu, CDropdownItem } from '@coreui/react';
+import HoverDropdown from "../Menu";
 
 const Header = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -16,46 +16,246 @@ const Header = () => {
     setDrawerOpen(open);
   };
 
-  const menuItems1 = [
-    { title: "Home", description: "Go to homepage" },
-    { title: "About Us", description: "Learn more about us" },
-    { title: "Contact", description: "Get in touch with us" }
+  const menuItems = [
+    { label: 'Action', href: '#' },
+    { label: 'Another action', href: '#' },
+    { label: 'Something else here', href: '#' }
   ];
 
-  // Detect scroll and apply background and text color changes
- useEffect(() => {
-  const links = document.querySelectorAll('.navbar .nav-link');
-  const buttons = document.querySelectorAll('.navbar ul button');
+  useEffect(() => {
+    const links = document.querySelectorAll('.navbar .nav-link');
+    const navbar = document.querySelector('.navbar');
+    const buttons = document.querySelectorAll('.nav-link button ');
+    const menuIcon = document.querySelector('img[alt="menu-icon"]');
+    const LogoIcon = document.querySelector('img[alt="Logo"]');
 
-  const handleScroll = () => {
-    if (window.scrollY > 50) {
-      setIsScrolled(true);
-      links.forEach(link => link.classList.add('text-white'));
-      buttons.forEach(btn => btn.classList.add('text-white'));
-    } else {
-      links.forEach(link => link.classList.remove('text-white', 'bg-black'));
-      buttons.forEach(btn => btn.classList.remove('text-white', 'bg-black'));
-      setIsScrolled(false);
-    }
-  };
 
-  window.addEventListener('scroll', handleScroll);
+    const updateMenuIcon = () => {
+      const isMobileView = window.innerWidth <= 992;
+      const isScrolled = window.scrollY > 50;
 
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-  };
-}, []);
+      // Check if on root ("/") path
+      if (location.pathname === '/') {
+        // If not scrolled
+        if (!isScrolled) {
+          menuIcon.src = '/grid.svg';
+          LogoIcon.src = '/nobglogo.png';
+        } 
+        // If scrolled
+        else if (isScrolled) {
+          menuIcon.src = '/grid.svg';
+          LogoIcon.src = '/Uber(1).png';
+        }
+      }
+      else if (location.pathname === '/Services' ) {
+        if (!isScrolled) {
+          menuIcon.src = '/grid.svg';
+          LogoIcon.src = '/Uber(1).png';
+        } 
+        // If scrolled
+        else if (isScrolled) {
+          menuIcon.src = '/grid.svg';
+          LogoIcon.src = '/Uber(1).png';
+        }  
+       }
 
+       else if (location.pathname === '/Blog') {
+        if (!isScrolled) {
+          menuIcon.src = '/grid2.svg';
+          LogoIcon.src = '/nobglogo.png';
+        } 
+        // If scrolled
+        else if (isScrolled) {
+          menuIcon.src = '/grid.svg';
+          LogoIcon.src = '/Uber(1).png';
+        }}
+                
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', updateMenuIcon);
+    // Initial check on mount
+    updateMenuIcon();
+
+    // Cleanup on component unmount
+
+
+
+    const updateNavStyles = () => {
+      const pagesConfig = {
+        '/Services': {
+          scrollStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-black'],
+          },
+          defaultStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-transparent'],
+          },
+        },
+        '/Home': {
+          scrollStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-black'],
+          },
+          defaultStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-transparent'],
+          },
+        },
+        '/': {
+          scrollStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-black'],
+          },
+          defaultStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-transparent'],
+          },
+        },
+        '/Blog': {
+          scrollStyles: {
+            links: 'text-white',
+            buttons:'text-white',
+            navbar: ['bg-black'],
+          },
+          defaultStyles: {
+            links: 'text-black',
+            buttons: 'text-black',
+            navbar: ['bg-transparent'],
+          },
+        },
+        '/Clients': {
+          scrollStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-black'],
+          },
+          defaultStyles: {
+            links: 'text-black',
+            buttons: 'text-black',
+            navbar: ['bg-transparent'],
+          },
+        },
+        '/AboutUS': {
+          scrollStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-black'],
+          },
+          defaultStyles: {
+            links: 'text-black',
+            buttons: 'text-black',
+            navbar: ['bg-transparent'],
+          },
+        },
+        '/product': {
+          scrollStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-black'],
+          },
+          defaultStyles: {
+            links: 'text-black',
+            buttons: 'text-black',
+            navbar: ['bg-transparent'],
+          },
+        },
+        '/ContactUS': {
+          scrollStyles: {
+            links: 'text-white',
+            buttons: 'text-white',
+            navbar: ['bg-black'],
+          },
+          defaultStyles: {
+            links: 'text-black',
+            buttons: 'text-black',
+            navbar: ['bg-transparent'],
+          },
+        },
+      };
+    
+
+  
+      const currentPage = pagesConfig[location.pathname];
+      if (!currentPage) return;
+    
+      const isScrolled = window.scrollY > 50;
+      setIsScrolled(isScrolled); // Update the state based on scroll
+    
+      const styles = isScrolled ? currentPage.scrollStyles : currentPage.defaultStyles;
+      
+  // Update links
+  if (styles && links) {
+    links.forEach(link => {
+      link.classList.remove('text-black', 'text-white');
+      link.classList.add(styles.links);
+    });
+  }
+
+  // Update buttons
+  if (styles && buttons) {
+    buttons.forEach(btn => {
+      btn.classList.remove('text-black', 'text-white'); // Correct removal
+      btn.classList.add(styles.buttons);
+    });
+  }
+
+  // Update navbar styles
+  if (styles && navbar) {
+    navbar.classList.remove('bg-transparent', 'bg-black', 'bg-white', 'text-black', 'text-white');
+    styles.navbar.forEach(navClass => {
+      navbar.classList.add(navClass);
+    });
+  }
+    };
+
+    window.addEventListener('scroll', updateNavStyles);
+    window.addEventListener('resize', updateMenuIcon);
+    
+    updateNavStyles(); // Initial call for setting the right style and icon
+    updateMenuIcon();
+
+    return () => {
+      window.removeEventListener('scroll', updateNavStyles,updateMenuIcon);
+      window.removeEventListener('resize', updateMenuIcon);
+
+    };
+  }, [location.pathname]);
 
   return (
-    <nav className={`navbar navbar-expand-lg fixed-top ${isScrolled ? 'bg-black' : ''}`}>
+    <nav
+      className={`navbar navbar-expand-lg fixed-top ${
+        location.pathname === '/Services'
+          ? 'bg-white text-black'
+          : location.pathname === '/Blog'
+          ? 'bg-black'
+          : isScrolled
+          ? 'bg-black'
+          : ''
+      }`}
+      style={{
+        height: isScrolled ? '80px' : '100px',
+        paddingTop:"12px", // Adjust height when scrolled
+        transition: 'height 0.9s ease, background-color 0.6s ease, width 1.7s ease',
+      }}
+    >
       <div className="container hdr">
-        {/* Logo */}
         <Link className="navbar-brand" to="/">
-          <img src="../Uberms-logo.png" alt="Andeo" className="logo" />
+          <img src="../Uberms-logo.png" alt="Logo" className="logo"
+          style={{
+            width : isScrolled ? '200px' : '250px',
+           transition: ' width 1.0s ease',
+
+          }} />
         </Link>
 
-        {/* Hamburger Menu Button for mobile view */}
         <button
           className="navbar-toggler"
           type="button"
@@ -70,40 +270,33 @@ const Header = () => {
 
         {/* Nav Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav first">
+          <ul className="navbar-nav ms-auto gap-3">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/Home">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link className="nav-link" to="/AboutUS">
                 About Us
               </Link>
             </li>
-            <li className="nav-item">
-            <CDropdown variant="nav-item" popper={false}>
-              <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem href="#">Action</CDropdownItem>
-                <CDropdownItem href="#">Another action</CDropdownItem>
-                <CDropdownDivider />
-                <CDropdownItem href="#">Something else here</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown> 
-             </li>
-            <li className="nav-item">
-              <MenuCustomList buttonText="PAGES" className=" mn" menuItems={menuItems1} />
+            <li className="nav-item ">
+              <HoverDropdown title={"Services"} menuItems={menuItems} />
             </li>
             <li className="nav-item">
-              <MenuCustomList buttonText="SERVICE" className=" mn" menuItems={menuItems1} />
+              <Link className="nav-link" to="/Blog">
+                Blog
+              </Link>
             </li>
             <li className="nav-item">
-              <MenuCustomList buttonText="BLOG" className=" mn" menuItems={menuItems1} />
+              <Link className="nav-link" to="/Shop">
+                Shop
+              </Link>
             </li>
           </ul>
 
-          <ul className="navbar-nav second">
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <button
                 onClick={toggleDrawer(true)}
@@ -113,7 +306,7 @@ const Header = () => {
               </button>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/products">
+              <Link className="nav-link" to="/Contact">
                 Contact US
               </Link>
             </li>

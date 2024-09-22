@@ -8,7 +8,12 @@ export default defineConfig({
       '@': '/src',  // Assuming this alias is used for resolving paths
     },
   },
-  base: '/Nader-s_Project/', // Ensure this matches your GitHub repository name exactly
-})
-
-
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
+  },
+});

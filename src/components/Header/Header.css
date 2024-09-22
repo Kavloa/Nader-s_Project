@@ -1,4 +1,3 @@
-/* Header.css */
 
 /* Logo styling */
 .logo {
@@ -6,19 +5,22 @@
 }
 
 .hdr {
-  background: transparent !important;
   min-width: 100%;
+  max-width: 100%;
   padding: 0 10px !important;
   margin: 0 !important;
-  height: 110px !important;
+  height: 90px !important;
 }
 
 .first {
-  padding-left: 200px !important;
+  padding-left: 100px !important;
 }
-.second {
-  padding-left: 200px !important;
+button.svs {
+  --bs-btn-color: white; /* Default color */
+  color: var(--bs-btn-color); /* Apply the variable as button text color */
 }
+
+
 
 .sidebar {
   background-color: #010212 !important;
@@ -82,16 +84,7 @@
 .sidebar ul li .tx:hover {
   color: #c87a26 !important;
 }
-::after {
-  content: "";
-  width: 0%;
-  height: 2px;
-  background: #c87a26;
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  transition: all 0.3s;
-}
+
 
 .sidebar ul li  .tx:hover::after {
   width: 70%;
@@ -102,23 +95,11 @@
 }
 
 
-/* Navbar background and spacing */
-.navbar {
-  background: transparent !important;
-  margin-top: 0 !important;
-  padding: 0 0 !important;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Add shadow for depth */
-}
-
-/* .navbar ul {
-  height: 90% !important;
-} */
 
 .navbar ul button {
   padding: 8px !important;
-  margin: 8px 15px !important;
+  margin: 8px 0px !important;
   text-transform: uppercase;
-  color: white ;
   font-weight: 500;
   border: none !important;
   background-color: transparent;
@@ -150,10 +131,9 @@
 
 /* Link styles */
 .navbar .nav-link {
-  color: white; /* Text color for nav links */
   font-weight: 500;
   text-transform: uppercase; /* Add uppercase styling */
-  margin: 8px 15px; /* Add spacing between links */
+  margin: 8px 1px; /* Add spacing between links */
   position: relative; /* To add hover underline */
 }
 
@@ -174,19 +154,49 @@
   transition: all 0.3s;
 }
 
+.nav-link button{
+  padding: 0 ;
+  margin: 0 ;
+  height: 32px !important;
+  background-color: transparent !important;
+}
+
+
+
 .navbar .nav-link:hover::after {
   width: 100%;
 }
 
 /* Responsive styles */
-@media (max-width: 991px) {
+/* Mobile view adjustments */
+@media (max-width: 992px) {
   .navbar {
-      padding: 0.5rem 0;
+    background-color: black !important;
   }
-  .navbar .nav-link {
-      margin: 10px 0; /* Adjust margins for mobile view */
+
+  .navbar-collapse {
+    background-color: black;
+  }
+
+  .nav-link button{
+    padding-left: 25px !important;
+    height: 32px !important;
+    color: white !important;
+  }
+  .navbar-nav .nav-link {
+    padding-left: 25px;
+    color: white !important; /* Change text color to white for visibility */
+  }
+
+  .navbar-toggler {
+    border-color: white; /* Ensure the hamburger icon is visible */
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
 }
+
 
 .item {
   /* Customize the Menu Items */
@@ -206,45 +216,14 @@
 }
 
 
-.menuu{
-  z-index: 1000;
-  height: min-content;
-  padding: 0 !important;
-  border-radius: 10%;
-  border: none !important;
-}
-.menuu:click{
-  /* border-color: red !important; */
-}
 
-.menuu:hover{
-  /* border: none !important; */
-}
 
-.menuu ul{
-  border: none !important;
-  color: #000;
-  height: min-content;
-  padding-left: 0 !important;
-  width: 215px;
-  list-style: none !important;
-}
 
-.menuu ul:hover{
-  border: none !important;
-}
 
-ul a button{
-width: 100% !important;
-border: none !important;
-padding: 0 !important;
-background-color: white;
-}
 
-ul a button:hover {
-  border: none !important;
-  background-color: whitesmoke;
-  }
+
+
+
 
   .sv:hover {
     transform: scale(1.3); /* Adjust the scale value to control the enlargement */
@@ -263,7 +242,6 @@ ul a button:hover {
       transition: all 0.3s;
     }  
 
-
     
     .bg-black {
       background-color: black !important;
@@ -280,3 +258,7 @@ ul a button:hover {
       border: 2px solid white !important; /* Add a bottom border with the desired color */
     }
     
+
+    .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+      color: white !important; 
+    }

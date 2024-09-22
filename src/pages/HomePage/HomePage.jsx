@@ -9,6 +9,8 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button'; // Corrected Button import
 import ListGroup from 'react-bootstrap/ListGroup';
 import ControlledCarousel2 from "../../components/Carousel2";
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,17 +29,15 @@ const HomePage = () => {
 
   const imgslides = [
     {
-      image: './bg-02.jpg',
+      image: './COVER_1.jpg',
     },
     {
-      image: './bg-02.jpg',
+      image: './COVER 2.jpg',
     },
     {
-      image: './bg-02.jpg',
+      image: './COVER 3.jpg',
     },
-    {
-      image: './bg-02.jpg',
-    },  ];   
+ ];   
     
     const logos = [
     {
@@ -59,25 +59,20 @@ const HomePage = () => {
       image: './logo6.png',
     },
     {
-      image: './logo1.png',
+      image: './logo7.png',
     },
     {
-      image: './logo2.png',
+      image: './logo8.png',
     },
     {
-      image: './logo3.png',
+      image: './logo9.png',
     },
     {
-      image: './logo4.png',
+      image: './logo10.png',
     },
     {
-      image: './logo5.png',
+      image: './logo11.png',
     },
-    {
-      image: './logo6.png',
-    },
-
-
   ];  
   const slide2 = [
     {
@@ -123,6 +118,51 @@ const HomePage = () => {
     },
   ];
 
+  const services = [
+    {
+      id: "project-strategy",
+      icon: "🚀",
+      title: "Project Strategy",
+      description:
+        "Need something changed or is there something not quite working Aellente humour or randomised words",
+    },
+    {
+      id: "digital-experience",
+      icon: "📝",
+      title: "Digital Experience",
+      description:
+        "Need something changed or is there something not quite working Aellente humour or randomised words",
+    },
+    {
+      id: "web-development",
+      icon: "💻",
+      title: "Web Development",
+      description:
+        "Need something changed or is there something not quite working Aellente humour or randomised words",
+    },
+    {
+      id: "graphic-design",
+      icon: "🎨",
+      title: "Graphic Design",
+      description:
+        "Need something changed or is there something not quite working Aellente humour or randomised words",
+    },
+    {
+      id: "content-marketing",
+      icon: "🗒️",
+      title: "Content Marketing",
+      description:
+        "Need something changed or is there something not quite working Aellente humour or randomised words",
+    },
+    {
+      id: "reporting-analysis",
+      icon: "📊",
+      title: "Reporting & Analysis",
+      description:
+        "Need something changed or is there something not quite working Aellente humour or randomised words",
+    },
+  ];
+
   const toggleAnswer = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -141,7 +181,7 @@ const HomePage = () => {
         const increment = target / 200;
         if (count < target) {
           counter.innerText = Math.ceil(count + increment);
-          setTimeout(updateCount, 10);
+          setTimeout(updateCount, 20);
         } else {
           counter.innerText = target.toLocaleString(); // Add commas for readability
         }
@@ -181,11 +221,37 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll" , handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll" , handleScroll);
     };
   }, [countStarted]);
+
+
+  
+
+  const ServiceTitles = () => {
+    return (
+      <div className="grid-container">
+        {services.map((service) => (
+          <Link
+            to={`/Services#${service.id}`} 
+            className="card-link"
+            key={service.id}
+          >
+            <div className="card">
+              <div className="card-icon">{service.icon}</div>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <div className="card-arrow">→</div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    );
+  };
+
+
 
   return (
     <div className="home">
@@ -200,11 +266,12 @@ const HomePage = () => {
           {/* First Section */}
           <Col md={6}>
             <div className="part1">
-              <div className="sec1">
-                <Image src="./1.jpg" className="pic mb-3" thumbnail />
+              <div className="sec1 ">
+                <Image src="./UBER ABOUT US.jpg" className="pic p-2 mb-3" thumbnail />
                 <h1 className="mb-4">Incredibly fast and amazing features</h1>
                 <p>
-                  We provide digital experience services to startups and small businesses velit purus aliquet, massa fringilla.
+                At UberMS, we believe empathy is the starting point for every solution.
+In an era of rapid technological advances, people are losing trust in what they see. To help brands balance authenticity with innovation, we create human-centric experiences that deeply connect brands to people’s real needs, wants, desires and hopes. We are an outcomes-obsessed brand experience agency that propels people and communities forward.
                 </p>
                 <Button variant="outline-warning">Learn More</Button>
               </div>
@@ -218,39 +285,36 @@ const HomePage = () => {
               Best Digital <span className="highlight">Creative Agency</span>
             </h1>
             <p className="description">
-              There are many variations of passages of lorem in free market to
-              available, but the majority have suffered alteration in some form, by
-              injected humour, or randomised words.
+            At Uber Marketing Solutions, we bring over a decade of marketing expertise to help businesses thrive. With a proven track record of collaborating with Fortune 500 companies, we offer innovative, results-driven strategies tailored to your brand's unique needs.
             </p>
 
             <div className="cta-section d-flex justify-content-start flex-wrap my-4">
               <ListGroup>
-                <ListGroup.Item className="mt-2 rounded"> 
-                  <img src="./hex-check.svg"  alt=""  />For Marketing Professionals</ListGroup.Item>
+              <ListGroup.Item className="mt-2 rounded"> 
+                  <img src="./hex-check.svg"  alt=""  />Over 10 years of experience in marketing and brand strategy.</ListGroup.Item>
                 <ListGroup.Item className="mt-2 border-top rounded"> 
-                  <img src="./hex-check.svg"  alt="" />The New Event Marketing Opportunity</ListGroup.Item>
+                  <img src="./hex-check.svg"  alt="" />Proven success working with multiple Fortune 500 companies.</ListGroup.Item>
                 <ListGroup.Item className="mt-2 border-top rounded"> 
-                  <img src="./hex-check.svg"  alt="" />Explore More</ListGroup.Item>
+                  <img src="./hex-check.svg"  alt="" />Data-driven, innovative marketing solutions designed for measurable results.</ListGroup.Item>
+                  <ListGroup.Item className="mt-2 rounded"> 
+                  <img src="./hex-check.svg"  alt=""  />Comprehensive services, from digital marketing to brand management.</ListGroup.Item>
+                <ListGroup.Item className="mt-2 border-top rounded"> 
+                  <img src="./hex-check.svg"  alt="" />A dedicated team focused on boosting visibility and engagement across all channels.</ListGroup.Item>
+                <ListGroup.Item className="mt-2 border-top rounded"> 
+                  <img src="./hex-check.svg"  alt="" />Tailored strategies to meet the unique needs of each client.</ListGroup.Item>
               </ListGroup>
-            
             </div>
-
-            <p className="footer-text">
-              Variations of passages of lorem in free market to available, but the
-              majority have suffered alteration in some form, by injected humour, or
-              randomised words.
-            </p>
           </Col>
         </Row>
       </Container>
 
-      <div className="statistics-container " ref={countersRef}>
+      <div className="statistics-container " >
         <div className="stat-item">
           <h2 className="count" data-target="10000">0</h2>
           <p>EXPERIENCED DESIGNERS</p>
           <span>Our company has 100 experts</span>
         </div>
-        <div className="stat-item">
+        <div className="stat-item"ref={countersRef}>
           <h2 className="count" data-target="5000">0</h2>
           <p>SATISFIED CUSTOMERS</p>
           <span>Our company has 5000 satisfied customers</span>
@@ -263,52 +327,26 @@ const HomePage = () => {
       </div>
 
 
-    <div className="offerings-container">
+
+
+    <div className=" offerings-container">
       <h3 className="offerings-title">WHAT WE OFFER</h3>
       <h1 className="offerings-heading">
         What We’re Offering Creative <span className="highlight">Digital Service</span>
       </h1>
+      <ServiceTitles />
 
-      <div className="cards-container">
-        <div className="card">
-          <div className="card-icon">📋</div>
-          <h3>Digital Experience</h3>
-          <p>Need something changed or is there something not quite working Aellente</p>
-          <div className="card-arrow">→</div>
-        </div>
-
-        <div className="card">
-          <div className="card-icon">📊</div>
-          <h3>Project Strategy</h3>
-          <p>Need something changed or is there something not quite working Aellente</p>
-          <div className="card-arrow">→</div>
-        </div>
-
-        <div className="card">
-          <div className="card-icon">📣</div>
-          <h3>Marketing</h3>
-          <p>Need something changed or is there something not quite working Aellente</p>
-          <div className="card-arrow">→</div>
-        </div>
-
-        <div className="card">
-          <div className="card-icon">💻</div>
-          <h3>Development</h3>
-          <p>Need something changed or is there something not quite working Aellente</p>
-          <div className="card-arrow">→</div>
-        </div>
-      </div>
     </div>
 
 
 
-    <div className="digital-solutions-container" ref={PreseRef}>
+    <div className="digital-solutions-container" >
       <div className="left-content">
         <h5 className="why-us">WHY US</h5>
         <h1 className="title">
           We Give You <span className="highlight">Digital Solutions</span>
         </h1>
-        <p className=" mt-5 description">
+        <p className=" mt-5 description" ref={PreseRef}>
           Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Fusce id velit ut tortor pretium viverra suspendisse fuis ultricies lacus sed turpis tincidunt id aliquet. Sed viverra tellus sed lectus vestibulum mattis.
         </p>
         <div className="progress-bar">
@@ -336,10 +374,11 @@ const HomePage = () => {
         <div className="progress">
           <div className="progress-value" data-value="90"></div>
         </div>
-      </div>            </div>
+      </div>
+       </div>
       <div className="right-content">
         <img
-          src="./1.jpg" // Replace with your image URL
+          src="./1.jpg" 
           alt="Person with laptop"
           className="person-image"
         />
@@ -398,12 +437,6 @@ const HomePage = () => {
   </h1>
 
   <div className="testimonial-content">
-    <div className="testimonial-image">
-      <img src="./ph.png" alt="Mahfuz Riad" />
-    </div>
-    <div className="cartext">
-      <ControlledCarousel slides={slide2} />
-    </div>
   </div>
 
   <div className="logos">
@@ -417,7 +450,7 @@ const HomePage = () => {
 
     <div className="case-studies-container">
       <div className="text-content">
-        <h5 className="subtitle">NEW CASE STUDIES</h5>
+        <h5 className="subtitle">Blogs</h5>
         <h1 className="title">
           We Are Passionate About Our Clients And <span className="highlight">Our Work</span>.
         </h1>

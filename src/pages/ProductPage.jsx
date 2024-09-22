@@ -1,19 +1,36 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 
-const ProductPage = () => {
-  const { id } = useParams();
+const UsersTable = () => {
+  const [users, setUsers] = useState([]);
 
-  const product = { id: 1, name: "Product 1", description: "Lorem ipsum" };
+  useEffect(() => {
+    fetch('http://localhost:3000/users')
+      .then(response => response.json())
+      .then(data => setUsers(data));
+  }, []);
 
   return (
-    <div className="container">
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
-      <img src="path/to/product-image.jpg" alt={product.name} />
-      <p>Price: {product.price}</p>
-    </div>
+    <table className='mt-10'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map(user => (
+          <tr key={user.id}>
+            <td>{user.id}</td>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+            <td>{user.role}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
-export default ProductPage;
+export default UsersTable;
